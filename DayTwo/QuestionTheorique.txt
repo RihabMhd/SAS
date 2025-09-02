@@ -1,0 +1,40 @@
+Q 01: Que signifie GCC ?
+GNU Compiler Collection: prendre le code ecrit en C et le transformer en language machine que l'ordinateur comprend, non pas seulement en C mais aussi
+Q 02: OK, alors que signifie GNU ?
+veut dire GNU's Not unix (unix est un systeme d'exploitation creer pour que plusieurs personnes utilise le meme ordinateur en meme temps , et il etait puissant,simple et portable) 
+Difference entre GNU et Unix :
+on peut modifier le code
+on peut partager les versions avec les autres
+free
+Q 03: C'est quoi le problème avec GCC, au fait ?
+i peut donner beaucoup de messages compliqués quand il ya une erreur
+etre un peu difficile à comprendre au début
+Q 04: Comment GCC est-il bon pour trouver des erreurs dans les
+programmes ?
+il lit le programme ligne par ligne et cherche des fautes
+Q 05: Pourquoi C est-il si laconique ? J'ai l'impression que les programmes
+seraient plus lisibles si C utilisait begin et end au lieu de { et }, integer au lieu
+de int, et ainsi de suite.
+c a ete invente il y a 50 ans, quand les ordinateurs etait tres lents et petits, les inventeurs voulaient ecrire du code rapide a taper et rapide a lire par la machine
+Q 06: Dans certains livres sur le C, la fonction main se termine par exit(0) au
+lieu de return 0. Est-ce la même chose ?
+les deux signifie:"Programme fini, tout va bien"
+return0 plus simplz, ca sort de la fonction main
+exit0 quitte le programme
+Q 07: Que se passe-t-il si un programme atteint la fin de la fonction main sans
+exécuter un return ?
+en C moderne, c est comme si tu avais ecrit return 0
+Q 08: Le compilateur supprime-t-il un commentaire entièrement ou le
+remplace-t-il par un espace blanc ?
+supprime les commentaires
+Q 09: Comment puis-je savoir si mon programme a un commentaire non
+terminé ?
+le GNU affiche un erreur
+Q 10: Est-il légal d'imbriquer un commentaire à l'intérieur d'un autre ?
+Non
+Q 11: D'où vient le nom du type float ?
+veut dire floating point (la virgule peut flotter a gauche ou a droit)
+Q 12: Pourquoi les constantes à virgule flottante doivent-elles se terminer par
+la lettre f ?
+on ajout la lettre f pour dire c est un petit nombre float 
+sans lettre f pour dire c est un lettre gros double
