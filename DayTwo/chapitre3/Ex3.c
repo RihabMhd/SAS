@@ -8,15 +8,17 @@ Entrez la deuxième date (mm/jj/aa) : 5/17/07
 #include <stdio.h>
 int main(void){
     int AnneOne,MoisOne,JourOne,AnneTwo,MoisTwo,JourTwo;
-    printf('Entrer la premiere date (mm/jj/aa):');
+    printf('Entrer la premiere date (aa/mm/jj):');
     scanf("%d/%d/%d",&AnneOne,&MoisOne,&JourOne);
 
-    printf('Entrer la deuxieme date (mm/jj/aa):');
+    printf('Entrer la deuxieme date (aa/mm/jj):');
     scanf("%d/%d/%d",&AnneTwo,&MoisTwo,&JourTwo);
 
     if(AnneOne<AnneTwo || AnneOne==AnneTwo && MoisOne<MoisTwo || AnneOne==AnneTwo && MoisOne==MoisTwo 
         && JourOne<JourTwo){
             printf("%d/%d/%d est plus tôt que %d/%d/%d ",AnneOne,MoisOne,JourOne,AnneTwo,MoisTwo,JourTwo);
+        }else{
+                    printf("%d/%d/%d est plus tôt que %d/%d/%d ",AnneTwo,MoisTwo,JourTwo,AnneOne,MoisOne,JourOne);
         }
 
 }
