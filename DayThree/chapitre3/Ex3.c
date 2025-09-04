@@ -12,12 +12,15 @@ int main(void){
     while(true){
         printf("Entrer un nombre :");
         scanf("%ld",&n);
+
         if (n <= 0)
             break;
         for(int i=0;i<10;i++){
             digit_seen[i]=false;
         }
+
         long t=n;
+
         while(t>0){
             digit =t%10;
             if(digit_seen[digit])
@@ -25,6 +28,7 @@ int main(void){
             digit_seen[digit]=true;
             t/=10;
         }
+        
         if(t>0)
         printf("Des chiffres sont repetes.\n");
         else 

@@ -12,3 +12,31 @@ arrière dans le tableau le début du dernier mot. Imprimez le dernier mot, puis
 recherchez le mot précédent. Répétez jusqu'au début du tableau. Finalement,
 imprimez le caractère de terminaison.
 */
+#include <stdio.h>
+#include <string.h>
+
+int main(void){
+    char mot[100];
+    char tab[100];
+    int i,j;
+    
+    printf("Entrez une phrase :");
+    scanf("%99s",mot);
+
+    j=0;
+    for(i=strlen(mot)-1;i>=0;i--){
+        if(mot[i]==' '){
+            strncpy(tab,&mot[i+1],j);
+            tab[j]='\0';
+            printf("%s ",tab);
+            j=0;
+        }
+        else{
+            tab[j]=mot[i];
+            j++;
+
+        }
+    }
+    printf("%s\n",tab);
+    return 0;
+}

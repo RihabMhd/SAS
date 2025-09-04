@@ -13,26 +13,31 @@ Indice : Stockez le message original dans un tableau de caractères, puis parcou
 le tableau en traduisant et en imprimant les caractères un par un.
 */
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 int main(){
     char tab[100];
     printf("Entrer votre message :");
-    scanf("%d",&tab);
-    for(int i=0;i<sizeof(tab)/sizeof(tab[0]);i++){
-        if(tab[i]=='A'){
-            tab[i]=="4";
-        }else if(tab[i]=='B'){
-            tab[i]=="8";
-        }else if(tab[i]=='E'){
-            tab[i]=="3";
-        }else if(tab[i]=='I'){
-            tab[i]=="1";
-        }else if(tab[i]=='O'){
-            tab[i]=="0";
-        }else if(tab[i]=='S'){
-            tab[i]=="5";
-        }else {
-            tab[i];
+    scanf("%99s",tab);
+    for(int i=0;tab[i]!='\0';i++){
+        if(toupper(tab[i])=='A'){
+            tab[i]='4';
+        }else if(toupper(tab[i])=='B'){
+            tab[i]='8';
+        }else if(toupper(tab[i])=='E'){
+            tab[i]='3';
+        }else if(toupper(tab[i])=='I'){
+            tab[i]='1';
+        }else if(toupper(tab[i])=='O'){
+            tab[i]='0';
+        }else if(toupper(tab[i])=='S'){
+            tab[i]='5';
         }
     }
-    printf("En B1FF-speak :%d",tab);
+    printf("En B1FF-speak :");
+    for(int i=0;tab[i]!='\0';i++){
+        printf("%c",toupper(tab[i]));
+    }
+    return 0;
 }
+
