@@ -29,28 +29,30 @@ int main(void) {
     scanf("%d:%d", &heure, &minute);
     int input = heure * 60 + minute;
 
-    if (input >= 8*60 && input <= 10*60+60) {
-        printf("L'heure de depart la plus proche est: 8:00 am");
+    int mid1 = (8*60 + 9*60+43) / 2;    
+    int mid2 = (9*60+43 + 11*60+19) / 2;  
+    int mid3 = (11*60+19 + 12*60+47) / 2;
+    int mid4 = (12*60+47 + 14*60) / 2;
+    int mid5 = (14*60 + 15*60+45) / 2;
+    int mid6 = (15*60+45 + 19*60) / 2;
+    int mid7 = (19*60 + 21*60+45) / 2;
 
-    } else if (input >= 9*60+43 && input <= 11*60+52) {
-        printf("L'heure de depart la plus proche est: 9:43 am");
-    } else if (input >= 11*60+19 && input <= 13*60+31) {
-        printf("L'heure de depart la plus proche est: 11:19 am");
-    } else if (input >= 12*60+47 && input <= 15*60) {
-        printf("L'heure de depart la plus proche est: 12:47 pm");
-    } else if (input >= 14*60 && input <= 16*60+8) {
-        printf("L'heure de depart la plus proche est: 2:00 pm");
-
-    } else if (input >= 15*60+45 && input <= 17*60+55) {
-        printf("L'heure de depart la plus proche est: 3:45 pm");
-    } else if (input >= 19*60 && input <= 21*60+20) {
-        printf("L'heure de depart la plus proche est: 7:00 pm");
-    } else if (input >= 21*60+45 && input <= 23*60+58) {
-        printf("L'heure de depart la plus proche est: 9:45 pm");
-    } else {
-
-        printf("Aucun depart proche trouve.\n");
-    }
+    if (input < mid1)
+        printf("Départ: 8:00 a.m., Arrivée: 10:16 a.m.\n");
+    else if (input < mid2)
+        printf("Départ: 9:43 a.m., Arrivée: 11:52 a.m.\n");
+    else if (input < mid3)
+        printf("Départ: 11:19 a.m., Arrivée: 1:31 p.m.\n");
+    else if (input < mid4)
+        printf("Départ: 12:47 p.m., Arrivée: 3:00 p.m.\n");
+    else if (input < mid5)
+        printf("Départ: 2:00 p.m., Arrivée: 4:08 p.m.\n");
+    else if (input < mid6)
+        printf("Départ: 3:45 p.m., Arrivée: 5:55 p.m.\n");
+    else if (input < mid7)
+        printf("Départ: 7:00 p.m., Arrivée: 9:20 p.m.\n");
+    else
+        printf("Départ: 9:45 p.m., Arrivée: 11:58 p.m.\n");
 
     return 0;
 }
