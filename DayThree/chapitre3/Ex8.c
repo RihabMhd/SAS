@@ -12,53 +12,51 @@ arrière dans le tableau le début du dernier mot. Imprimez le dernier mot, puis
 recherchez le mot précédent. Répétez jusqu'au début du tableau. Finalement,
 imprimez le caractère de terminaison.
 */
-#include <stdio.h>
-#include <string.h>
-#include <ctype.h>
+#include <stdio.h>   // pour printf et fgets
+#include <string.h>  // pour strlen
 
 int main(void) {
-    char phrase[200];
-    char termine = '\0'; 
-    int len, i, start, end;
+    char phrase[200];  // tableau pour stocker la phrase entrée par l’utilisateur
+    char fin = '\0';   // caractère de terminaison (., ? ou !) si présent
+    int len;           // longueur de la phrase
 
     printf("Entrez une phrase : ");
-    fgets(phrase, sizeof(phrase), stdin);
+    fgets(phrase, sizeof(phrase), stdin);  
+    // fgets lit une ligne depuis l’entrée clavier et la stocke dans "phrase"
 
-    len = strlen(phrase);
-    if (phrase[len-1] == '\n') {
-        phrase[len-1] = '\0';
-        len--;
+    // Enlever le '\n' ajouté par fgets à la fin de la chaîne
+    len = strlen(phrase);               // longueur de la phrase
+    if (len > 0 && phrase[len-1] == '\n') {
+        phrase[len-1] = '\0';           // remplacer '\n' par fin de chaîne
+        len--;                          // mettre à jour la longueur
     }
 
-
-    if (len > 0 && (phrase[len-1]=='.' || phrase[len-1]=='?' || phrase[len-1]=='!')) {
-        termine = phrase[len-1];
-        phrase[len-1] = '\0'; 
-        len--;
+    // Vérifier si le dernier caractère est un point, un point d’interrogation ou un point d’exclamation
+    if (len > 0 && (phrase[len-1] == '.' || phrase[len-1] == '?' || phrase[len-1] == '!')) {
+        fin = phrase[len-1];            // sauvegarder ce caractère
+        phrase[len-1] = '\0';           // l’enlever de la phrase
+        len--;                          // mettre à jour la longueur
     }
 
     printf("Inversion de la phrase : ");
 
-  
-    end = len;
-    for (i = len-1; i >= 0; i--) {
-        if (phrase[i] == ' ') {
-            start = i + 1;
-            for (int j = start; j < end; j++) {
-                printf("%c", phrase[j]);
-            }
-            printf(" ");
-            end = i; 
+    // Parcourir la phrase de la fin vers le début
+    for (int i = len-1; i >= 0; i--) {
+        if (phrase[i] == ' ') {         // si on trouve un espace = fin d’un mot
+            printf("%s ", &phrase[i+1]); // affiche le mot qui suit l’espace
+            phrase[i] = '\0';            // coupe la chaîne ici (remplace l’espace par '\0')
         }
     }
-    for (int j = 0; j < end; j++) {
-        printf("%c", phrase[j]);
+
+    // Afficher le premier mot (celui qui reste avant le premier espace)
+    printf("%s", phrase);
+
+    // Ajouter le signe de fin (si c’était ., ? ou !)
+    if (fin != '\0') {
+        printf("%c", fin);
     }
 
-    if (termine != '\0') {
-        printf("%c", termine);
-    }
-    printf("\n");
+    printf("\n"); // aller à la ligne
 
-    return 0;
+    return 0; // fin du programme
 }
