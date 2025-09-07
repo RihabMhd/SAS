@@ -15,29 +15,28 @@ le tableau en traduisant et en imprimant les caractères un par un.
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-int main(){
+
+int main() {
     char tab[100];
-    printf("Entrer votre message :");
-    scanf("%99s",tab);
-    for(int i=0;tab[i]!='\0';i++){
-        if(toupper(tab[i])=='A'){
-            tab[i]='4';
-        }else if(toupper(tab[i])=='B'){
-            tab[i]='8';
-        }else if(toupper(tab[i])=='E'){
-            tab[i]='3';
-        }else if(toupper(tab[i])=='I'){
-            tab[i]='1';
-        }else if(toupper(tab[i])=='O'){
-            tab[i]='0';
-        }else if(toupper(tab[i])=='S'){
-            tab[i]='5';
-        }
+
+    printf("Entrer votre message : ");
+    fgets(tab, sizeof(tab), stdin);
+
+    printf("En B1FF-speak : ");
+    for (int i = 0; tab[i] != '\0'; i++) {
+        char c = toupper(tab[i]);
+
+        if (c == 'A') c = '4';
+        else if (c == 'B') c = '8';
+        else if (c == 'E') c = '3';
+        else if (c == 'I') c = '1';
+        else if (c == 'O') c = '0';
+        else if (c == 'S') c = '5';
+
+        printf("%c", c);
     }
-    printf("En B1FF-speak :");
-    for(int i=0;tab[i]!='\0';i++){
-        printf("%c",toupper(tab[i]));
-    }
+
+    printf("!!!!!!!!!!\n"); 
     return 0;
 }
 

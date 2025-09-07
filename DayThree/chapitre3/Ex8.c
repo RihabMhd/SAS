@@ -14,29 +14,51 @@ imprimez le caractère de terminaison.
 */
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 
-int main(void){
-    char mot[100];
-    char tab[100];
-    int i,j;
-    
-    printf("Entrez une phrase :");
-    scanf("%99s",mot);
+int main(void) {
+    char phrase[200];
+    char termine = '\0'; 
+    int len, i, start, end;
 
-    j=0;
-    for(i=strlen(mot)-1;i>=0;i--){
-        if(mot[i]==' '){
-            strncpy(tab,&mot[i+1],j);
-            tab[j]='\0';
-            printf("%s ",tab);
-            j=0;
-        }
-        else{
-            tab[j]=mot[i];
-            j++;
+    printf("Entrez une phrase : ");
+    fgets(phrase, sizeof(phrase), stdin);
 
+    len = strlen(phrase);
+    if (phrase[len-1] == '\n') {
+        phrase[len-1] = '\0';
+        len--;
+    }
+
+
+    if (len > 0 && (phrase[len-1]=='.' || phrase[len-1]=='?' || phrase[len-1]=='!')) {
+        termine = phrase[len-1];
+        phrase[len-1] = '\0'; 
+        len--;
+    }
+
+    printf("Inversion de la phrase : ");
+
+  
+    end = len;
+    for (i = len-1; i >= 0; i--) {
+        if (phrase[i] == ' ') {
+            start = i + 1;
+            for (int j = start; j < end; j++) {
+                printf("%c", phrase[j]);
+            }
+            printf(" ");
+            end = i; 
         }
     }
-    printf("%s\n",tab);
+    for (int j = 0; j < end; j++) {
+        printf("%c", phrase[j]);
+    }
+
+    if (termine != '\0') {
+        printf("%c", termine);
+    }
+    printf("\n");
+
     return 0;
 }
